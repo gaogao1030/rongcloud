@@ -15,7 +15,9 @@ module Rongcloud
         GROUP_QUERY: '/group/user/query.json',
         GROUP_USER_GAG_ADD: '/group/user/gag/add.json',
         GROUP_USER_GAG_ROLLBACK: '/group/user/gag/rollback.json',
-        GROUP_USER_GAG_LIST: '/group/user/gag/list.json'
+        GROUP_USER_GAG_LIST: '/group/user/gag/list.json',
+        CHATROOM_CREATE: '/chatroom/create.json',
+        CHATROOM_USER_QUERY: '/chatroom/user/query.json'
     }
 
     def self.req_get(config)
