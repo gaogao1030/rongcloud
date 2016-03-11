@@ -6,14 +6,14 @@ module Rongcloud
         post = {uri: Rongcloud::Service::API_URI[:CHATROOM_CREATE],
                 params: optional_params({chatroomId: self.chat_room_id})}
         res = Rongcloud::Service.req_post(post)
-        res[:code] == 20
+        res[:code] == 200
       end
 
       def user_query
         post = {uri: Rongcloud::Service::API_URI[:CHATROOM_USER_QUERY],
                 params: optional_params({chatroomId: self.chat_room_id})}
         res = Rongcloud::Service.req_post(post)
-        res[:code] == 20
+        res[:code] == 200
       end
     end
 

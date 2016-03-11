@@ -9,7 +9,7 @@ module Rongcloud
               params: optional_params({chatroomId: self.chat_room_id})
       }
       res = Rongcloud::Service.req_post(post)
-      res[:code] == 20
+      res[:code] == 200
     end
 
   end

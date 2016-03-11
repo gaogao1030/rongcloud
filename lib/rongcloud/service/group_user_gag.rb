@@ -4,6 +4,7 @@ module Rongcloud
       attr_accessor :user_id
       attr_accessor :group_id
       attr_accessor :minute
+      attr_accessor :list
 
       def add
         post = {uri: Rongcloud::Service::API_URI[:GROUP_USER_GAG_ADD],
@@ -24,11 +25,12 @@ module Rongcloud
         res[:code]==200
       end
 
-      def list
+      def get_list
         post = {uri: Rongcloud::Service::API_URI[:GROUP_USER_GAG_LIST],
                 params: optional_params({groupId: self.group_id})
         }
         res = Rongcloud::Service.req_post(post)
+        self.list = res[:users]
         res[:code]==200
       end
 
