@@ -28,7 +28,7 @@ module Rongcloud
 
       #检查用户是否在线
       def check_online
-        post = {uri: Rongcloud::Service::API_URI[:USER_REFRESH],
+        post = {uri: Rongcloud::Service::API_URI[:USER_CHECK_ONLINE],
                 params: optional_params({userId: self.user_id, name: self.name, portraitUri: self.portrait_uri})
         }
         res = Rongcloud::Service.req_post(post)
