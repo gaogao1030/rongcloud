@@ -5,6 +5,7 @@ module Rongcloud
       attr_accessor :name
       attr_accessor :portrait_uri
       attr_accessor :token
+      attr_accessor :is_online
 
       #获取用户的token
       def get_token
@@ -24,6 +25,17 @@ module Rongcloud
         res = Rongcloud::Service.req_post(post)
         res[:code]==200
       end
+
+      #检查用户是否在线
+      def check_online
+        post = {uri: Rongcloud::Service::API_URI[:USER_REFRESH],
+                params: optional_params({userId: self.user_id, name: self.name, portraitUri: self.portrait_uri})
+        }
+        res = Rongcloud::Service.req_post(post)
+        self.is_online = res[:status]
+        res[:code]==200
+      end
+
     end
   end
 end
