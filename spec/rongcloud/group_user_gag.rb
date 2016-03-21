@@ -22,7 +22,7 @@ describe Rongcloud::Service::Group do
   it 'get group user gag list test' do
     group_user_gag = Rongcloud::Service::GroupUserGag.new
     group_user_gag.group_id = 1
-    expect(group_user_gag.list).to eq(true)
+    expect(group_user_gag.get_list).to eq(true)
   end
 
   it 'group user gag rollback test' do
