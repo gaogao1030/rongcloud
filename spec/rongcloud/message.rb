@@ -26,14 +26,13 @@ describe Rongcloud::Service::Message do
   it 'pulish group message test' do
     model = Rongcloud::Service::Message.new
     model.from_user_id = 2
-    model.to_user_id = 1
     model.to_group_id = 1
     model.object_name = 'RC:TxtMsg'
     txt_msg = Rongcloud::Service::RCTxtMsg.new
     txt_msg.content = 'good job'
     txt_msg.extra = 'hello extra'
 
-    expect(model.private_publish txt_msg).to eq(true)
+    expect(model.group_publish txt_msg).to eq(true)
   end
 
 

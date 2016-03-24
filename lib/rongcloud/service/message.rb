@@ -21,8 +21,8 @@ module Rongcloud
 
       #发送群组消息
       def group_publish(rc_msg)
-        post = {uri: Rongcloud::Service::API_URI[:MSG_PRV_PUBLISH],
-                params: optional_params({fromUserId: self.from_user_id, toUserId: self.to_user_id,
+        post = {uri: Rongcloud::Service::API_URI[:MSG_GROUP_PUBLISH],
+                params: optional_params({fromUserId: self.from_user_id,
                                          objectName: self.object_name, toGroupId: self.to_group_id,
                                          pushContent: self.push_content, pushData: self.push_data,
                                          content: rc_msg.json_content})
