@@ -3,6 +3,9 @@ module Rongcloud
     class Message < Rongcloud::Service::Model
       attr_accessor :from_user_id
       attr_accessor :to_user_id
+      attr_accessor :to_group_id
+      attr_accessor :push_content
+      attr_accessor :push_data
       attr_accessor :object_name #消息类型
 
       #发送单聊消息
@@ -10,6 +13,18 @@ module Rongcloud
         post = {uri: Rongcloud::Service::API_URI[:MSG_PRV_PUBLISH],
                 params: optional_params({fromUserId: self.from_user_id, toUserId: self.to_user_id,
                                          objectName: self.object_name,
+                                         content: rc_msg.json_content})
+        }
+        res = Rongcloud::Service.req_post(post)
+        res[:code]==200
+      end
+
+      #发送群组消息
+      def group_publish(rc_msg)
+        post = {uri: Rongcloud::Service::API_URI[:MSG_PRV_PUBLISH],
+                params: optional_params({fromUserId: self.from_user_id, toUserId: self.to_user_id,
+                                         objectName: self.object_name, toGroupId: self.to_group_id,
+                                         pushContent: self.push_content, pushData: self.push_data,
                                          content: rc_msg.json_content})
         }
         res = Rongcloud::Service.req_post(post)
@@ -88,5 +103,15 @@ module Rongcloud
         {operation: self.operation, sourceUserId: self.source_user_id, targetUserId: self.target_user_id, message: self.message, extra: self.extra}
       end
     end
+
+    class RCCmdMsg< Rongcloud::Service::RCMsg
+      attr_accessor :name
+      attr_accessor :data
+
+      def necessary_attrs
+        {name: self.name, data: self.data}
+      end
+    end
+
   end
 end
