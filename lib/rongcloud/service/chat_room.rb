@@ -4,6 +4,7 @@ module Rongcloud
       attr_accessor :chat_room_id
       attr_accessor :user_id
       attr_accessor :minute
+
       def create
         post = {uri: Rongcloud::Service::API_URI[:CHATROOM_CREATE],
                 params: optional_params({chatroomId: self.chat_room_id})}
@@ -49,4 +50,3 @@ module Rongcloud
 
   end
 end
-

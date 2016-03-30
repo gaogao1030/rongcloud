@@ -35,6 +35,18 @@ describe Rongcloud::Service::Message do
     expect(model.group_publish txt_msg).to eq(true)
   end
 
+  it 'pulish chatroom message test' do
+    model = Rongcloud::Service::Message.new
+    model.from_user_id = 2
+    model.to_group_id = 1
+    model.object_name = 'RC:TxtMsg'
+    txt_msg = Rongcloud::Service::RCTxtMsg.new
+    txt_msg.content = 'good job'
+    txt_msg.extra = 'hello extra'
+
+    expect(model.chatroom_publish txt_msg).to eq(true)
+  end
+
 
   #it 'get message history test' do
   #  model = Rongcloud::Service::Message.new

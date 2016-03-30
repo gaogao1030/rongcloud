@@ -24,7 +24,8 @@ module Rongcloud
         CHATROOM_USER_QUERY: '/chatroom/user/query.json',
         CHATROOM_USER_GAG_ADD: '/chatroom/user/gag/add.json',
         CHATROOM_USER_GAG_ROLLBACK: '/chatroom/user/gag/rollback.json',
-        CHATROOM_USER_GAG_LIST: '/chatroom/user/gag/list.json'
+        CHATROOM_USER_GAG_LIST: '/chatroom/user/gag/list.json',
+        CHATROOM_PUBLISH: '/message/chatroom/publish.json'
     }
 
     def self.req_get(config)

@@ -4,6 +4,7 @@ module Rongcloud
       attr_accessor :from_user_id
       attr_accessor :to_user_id
       attr_accessor :to_group_id
+      attr_accessor :to_chatroom_id
       attr_accessor :push_content
       attr_accessor :push_data
       attr_accessor :object_name #消息类型
@@ -26,6 +27,16 @@ module Rongcloud
                                          objectName: self.object_name, toGroupId: self.to_group_id,
                                          pushContent: self.push_content, pushData: self.push_data,
                                          content: rc_msg.json_content})
+        }
+        res = Rongcloud::Service.req_post(post)
+        res[:code]==200
+      end
+
+      #发送聊天室消息
+      def chatroom_publish(rc_msg)
+        post = {uri: Rongcloud::Service::API_URI[:CHATROOM_PUBLISH],
+                params: optional_params({objectName: self.object_name, toChatroomId: self.to_group_id,
+                                         fromUserId: self.from_user_id,content: rc_msg.json_content})
         }
         res = Rongcloud::Service.req_post(post)
         res[:code]==200
