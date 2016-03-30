@@ -61,4 +61,26 @@ describe Rongcloud::Service::Group do
     expect(group.dismiss).to eq(true)
   end
 
+  it 'user_gag_add' do
+    model = Rongcloud::Service::Group.new
+    model.group_id = 1
+    model.user_id = 1
+    model.minute = 60
+    expect(model.user_gag_add).to eq(true)
+  end
+
+  it "user_gag_rollback" do
+    model = Rongcloud::Service::Group.new
+    model.group_id = 1
+    model.user_id = 1
+    expect(model.user_gag_rollback).to eq(true)
+  end
+
+  it "user_gag_List" do
+    model = Rongcloud::Service::Group.new
+    model.group_id = 1
+    expect(model.get_user_gag_list).to eq(true)
+  end
+
+
 end

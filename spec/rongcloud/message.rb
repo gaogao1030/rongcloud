@@ -38,7 +38,7 @@ describe Rongcloud::Service::Message do
   it 'pulish chatroom message test' do
     model = Rongcloud::Service::Message.new
     model.from_user_id = 2
-    model.to_group_id = 1
+    model.to_chatroom_id = 1
     model.object_name = 'RC:TxtMsg'
     txt_msg = Rongcloud::Service::RCTxtMsg.new
     txt_msg.content = 'good job'

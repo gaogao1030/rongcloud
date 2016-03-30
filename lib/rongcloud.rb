@@ -10,7 +10,6 @@ require 'rongcloud/service'
 require 'rongcloud/service/user'
 require 'rongcloud/service/message'
 require 'rongcloud/service/group'
-require 'rongcloud/service/group_user_gag'
 require 'rongcloud/service/chat_room'
 
 module Rongcloud

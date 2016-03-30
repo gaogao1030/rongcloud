@@ -35,7 +35,7 @@ module Rongcloud
       #发送聊天室消息
       def chatroom_publish(rc_msg)
         post = {uri: Rongcloud::Service::API_URI[:CHATROOM_PUBLISH],
-                params: optional_params({objectName: self.object_name, toChatroomId: self.to_group_id,
+                params: optional_params({objectName: self.object_name, toChatroomId: self.to_chatroom_id,
                                          fromUserId: self.from_user_id,content: rc_msg.json_content})
         }
         res = Rongcloud::Service.req_post(post)
