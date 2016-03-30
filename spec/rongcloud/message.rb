@@ -36,19 +36,19 @@ describe Rongcloud::Service::Message do
   end
 
 
-  it 'get message history test' do
-    model = Rongcloud::Service::Message.new
-    sync_msg = ->(date_str) do
-      ('00'..'23').to_a.each { |h|
-        history = model.history("#{date_str}#{h}")
-        if history[:code]==200 && history[:url] && history[:url].include?('http')
-          system(" curl -o tmp/#{history[:date]}.zip #{history[:url]}")
-          system(" unzip -o tmp/#{history[:date]}.zip -d tmp/")
-        end
-        expect(history[:code]).to eq(200)
-      }
-    end
-    sync_msg.call(Time.now.strftime('%Y%m%d'))
-    sync_msg.call(DateTime.parse((Time.now.to_time-24*60*60).to_s).strftime('%Y%m%d'))
-  end
+  #it 'get message history test' do
+  #  model = Rongcloud::Service::Message.new
+  #  sync_msg = ->(date_str) do
+  #    ('00'..'23').to_a.each { |h|
+  #      history = model.history("#{date_str}#{h}")
+  #      if history[:code]==200 && history[:url] && history[:url].include?('http')
+  #        system(" curl -o tmp/#{history[:date]}.zip #{history[:url]}")
+  #        system(" unzip -o tmp/#{history[:date]}.zip -d tmp/")
+  #      end
+  #      expect(history[:code]).to eq(200)
+  #    }
+  #  end
+  #  sync_msg.call(Time.now.strftime('%Y%m%d'))
+  #  sync_msg.call(DateTime.parse((Time.now.to_time-24*60*60).to_s).strftime('%Y%m%d'))
+  #end
 end
