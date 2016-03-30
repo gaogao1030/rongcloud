@@ -4,6 +4,7 @@ module Rongcloud
       attr_accessor :chat_room_id
       attr_accessor :user_id
       attr_accessor :minute
+      attr_accessor :user_gag_list
 
       def create
         post = {uri: Rongcloud::Service::API_URI[:CHATROOM_CREATE],
@@ -40,10 +41,11 @@ module Rongcloud
         res[:code] == 200
       end
 
-      def user_gag_list
+      def get_user_gag_list
         post = {uri: Rongcloud::Service::API_URI[:CHATROOM_USER_GAG_LIST],
                 params: optional_params({chatroomId: self.chat_room_id})}
         res = Rongcloud::Service.req_post(post)
+        self.user_gag_list = res[:users]
         res[:code] == 200
       end
     end
